@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мій список цілей</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+        }
+        h1 {
+            margin-top: 0;
+            color: #333;
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+            min-height: 18px;
+        }
+        .filters {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+        .filters button {
+            flex: 1;
+            background-color: #e9ecef;
+            color: #333;
+            padding: 8px;
+            font-size: 14px;
+        }
+        .filters button.active {
+            background-color: #007bff;
+            color: white;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            gap: 10px;
+        }
+        li.completed .goal-text {
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+        .goal-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            word-break: break-all;
+        }
+        .delete-btn {
+            background-color: #dc3545;
+            padding: 5px 10px;
+            font-size: 14px;
+        }
+        .delete-btn:hover {
+            background-color: #a71d2a;
+        }
+        .counter {
+            font-weight: bold;
+            color: #555;
+            text-align: center;
+        }
+        .empty-message {
+            text-align: center;
+            color: #777;
+            font-style: italic;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Мій список цілей</h1>
+        
+        <form id="goal-form">
+            <div class="input-group">
+                <input type="text" id="goal-input" placeholder="Введіть ціль (від 3 до 100 символів)..." autocomplete="off">
+                <button type="submit">Додати</button>
+            </div>
+            <div id="error-message" class="error"></div>
+        </form>
+
+        <div class="filters">
+            <button type="button" class="filter-btn active" data-filter="all">Усі</button>
+            <button type="button" class="filter-btn" data-filter="active">Активні</button>
+            <button type="button" class="filter-btn" data-filter="completed">Виконані</button>
+        </div>
+
+        <ul id="goal-list"></ul>
+        <div id="empty-message" class="empty-message">Поки що цілей немає</div>
+
+        <div id="counter" class="counter">Усього: 0. Виконано: 0</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
